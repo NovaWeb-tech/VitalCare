@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أخصائي الرعاية المنزلية والتأهيل الطبي</title>
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- جوجل فونتس خط تجوال -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d9488;
+            --primary-dark: #0f766e;
+            --secondary-color: #2563eb;
+            --accent-color: #10b981;
+            --dark-color: #0f172a;
+            --light-bg: #f0f9ff;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --shadow: 0 10px 20px -5px rgba(13, 148, 136, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-bottom: 90px;
+        }
+
+        /* الهيدر الرئيسي */
+        header {
+            background: linear-gradient(135deg, #0f766e, #1e40af);
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 20px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 8px 25px rgba(15, 118, 110, 0.25);
+        }
+
+        header h1 {
+            font-size: 1.9rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            color: #f0fdf4;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* القائمة الرئيسية */
+        #main-menu {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .menu-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .main-btn {
+            background: var(--card-bg);
+            color: var(--primary-dark);
+            border: 2px solid #a7f3d0;
+            padding: 22px 20px;
+            border-radius: 18px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+
+        .main-btn i.icon-main {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .main-btn:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .main-btn:hover i.icon-main {
+            color: #ffffff;
+        }
+
+        /* صفحات الأقسام المستقلة */
+        .section-page {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid #ccfbf1;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .section-page.active {
+            display: block;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #0369a1;
+            color: #ffffff;
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            border-bottom: 3px solid #99f6e4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* تنسيقات الصور */
+        .service-img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 2px solid #f1f5f9;
+        }
+
+        .img-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .img-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid #f1f5f9;
+        }
+
+        /* بطاقات المحتوى */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 18px;
+            background: #f8fafc;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #99f6e4;
+            background: #ffffff;
+        }
+
+        .card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .devices-box {
+            background: #f0fdf4;
+            border-right: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 12px;
+            color: #166534;
+        }
+
+        .devices-box h4 {
+            color: #15803d;
+            margin-bottom: 6px;
+        }
+
+        /* أزرار التواصل */
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .cta-btn {
+            padding: 12px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-call { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .btn-whatsapp { background: linear-gradient(135deg, #10b981, #059669); }
+
+        /* الشريط السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 1000;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .bottom-nav a i {
+            font-size: 1.3rem;
+            margin-bottom: 2px;
+        }
+
+        .bottom-nav a.whatsapp-link { color: #10b981; }
+        .bottom-nav a.call-link { color: #2563eb; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الرئيسي -->
+    <header>
+        <h1>أخصائي الرعاية والخدمات الطبية</h1>
+        <p>تمريض منزلي • حجامة وتدليك • علاج طبيعي وتأهيل</p>
+        <div class="badge-container">
+            <span class="badge"><i class="fa-solid fa-house-medical"></i> زيارات منزلية</span>
+            <span class="badge"><i class="fa-solid fa-user-nurse"></i> عناية متخصصة</span>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- القائمة الرئيسية -->
+        <div id="main-menu">
+            <h3 class="menu-title">اختر القسم المطلوبة استعراضه:</h3>
+            <div class="nav-buttons">
+                <button class="main-btn" onclick="openFullPage('cupping-page')">
+                    <span><i class="fa-solid fa-staff-snake icon-main"></i> قسم الحجامة والمساج</span>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="main-btn" onclick="openFullPage('nursing-page')">
+                    <span><i class="fa-solid fa-user-nurse icon-main"></i> التمريض والعناية بالجروح</span>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="main-btn" onclick="openFullPage('pt-page')">
+                    <span><i class="fa-solid fa-crutch icon-main"></i> العلاج الطبيعي والتأهيل</span>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="tel:01060247673" class="cta-btn btn-call">
+                    <i class="fa-solid fa-phone"></i> اتصال مباشر: 01060247673
+                </a>
+                <a href="https://wa.me/201060247673" target="_blank" class="cta-btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر الواتساب
+                </a>
+            </div>
+        </div>
+
+        <!-- 1. قسم الحجامة والمساج -->
+        <div id="cupping-page" class="section-page">
+            <button class="back-btn" onclick="showMainMenu()">
+                <i class="fa-solid fa-arrow-right"></i> العودة للقائمة الرئيسية
+            </button>
+            
+            <h2 class="section-title"><i class="fa-solid fa-fire-flame-curved"></i> قسم الحجامة والمساج</h2>
+            <p>نقدم كافة أنواع الحجامة والتدليك العلاجي بأحدث الطرق المعقمة والآمنة:</p>
+            
+            <img src="cupping.jpg" alt="قسم الحجامة والمساج" class="service-img">
+
+            <div class="grid-cards">
+                <div class="card">
+                    <h4><i class="fa-solid fa-circle-check"></i> الحجامة الدموية والوقائية</h4>
+                    <p>لتنقية الدم، استعادة النشاط، وتخفيف آلام الظهر والصداع المزمن.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fa-solid fa-circle-check"></i> الحجامة الجافة والمتزحلقة</h4>
+                    <p>جلسات المساج بالزيوت الطبيعية لفك التشنجات العضلية والتوتر.</p>
+                </div>
+            </div>
+
+            <div class="devices-box">
+                <h4><i class="fa-solid fa-bolt"></i> الأجهزة المتاحة بالجلسة:</h4>
+                <p>• استخدام جهاز <strong>Gun Massage (جن مساج)</strong> لإرخاء العضلات العميقة قبل الحجامة.</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/201060247673" class="cta-btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> حجز جلسة حجامة
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. قسم التمريض والعناية بالجروح -->
+        <div id="nursing-page" class="section-page">
+            <button class="back-btn" onclick="showMainMenu()">
+                <i class="fa-solid fa-arrow-right"></i> العودة للقائمة الرئيسية
+            </button>
+
+            <h2 class="section-title"><i class="fa-solid fa-bandage"></i> قسم التمريض والعناية بالجروح</h2>
+            <p>خدمات تمريضية منزلية احترافية ومتابعة دقيقة لغيار الجروح وجهاز الفاك:</p>
+
+            <!-- الصورة الرئيسية للتمريض المنزلي -->
+            <img src="تمريض منزلي.jpg" alt="تمريض منزلي" class="service-img">
+
+            <!-- معرض صور الغيارات -->
+            <div class="img-gallery">
+                <img src="غيار١.jpg" alt="غيار الجروح 1">
+                <img src="غيار٢.jpg" alt="غيار الجروح 2">
+                <img src="غيار٣.jpg" alt="غيار الجروح 3">
+            </div>
+
+            <div class="grid-cards">
+                <div class="card">
+                    <h4><i class="fa-solid fa-notes-medical"></i> الغيار على الجروح</h4>
+                    <p>العناية بجروح العمليات الجراحية، والقدم السكري بطرق معقمة.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fa-solid fa-pump-medical"></i> متابعة جهاز الفاك (VAC)</h4>
+                    <p>تطبيق وتقنية الضغط السلبي للمساعدة في الالتئام السريع للجروح المعقدة.</p>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="tel:01060247673" class="cta-btn btn-call">
+                    <i class="fa-solid fa-phone"></i> طلب زيارة تمريضية
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. قسم العلاج الطبيعي والتأهيل -->
+        <div id="pt-page" class="section-page">
+            <button class="back-btn" onclick="showMainMenu()">
+                <i class="fa-solid fa-arrow-right"></i> العودة للقائمة الرئيسية
+            </button>
+
+            <h2 class="section-title"><i class="fa-solid fa-person-walking-with-cane"></i> قسم العلاج الطبيعي والتأهيل</h2>
+            <p>برامج تأهيل حركي شاملة للزيارات المنزلية:</p>
+
+            <img src="طبيعي.jpg" alt="العلاج الطبيعي والتأهيل" class="service-img">
+
+            <div class="grid-cards">
+                <div class="card">
+                    <h4><i class="fa-solid fa-brain"></i> تأهيل حالات الجلطات الدماغية</h4>
+                    <p>برامج لاستعادة التوازن والحركة وتقوية العضلات المتأثرة بالجلطة.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fa-solid fa-bone"></i> تأهيل الغضروف والعمود الفقري</h4>
+                    <p>ما بعد جراحات العمود الفقري والانزلاق الغضروفي للعودة للحياة الطبيعية.</p>
+                </div>
+            </div>
+
+            <div class="devices-box">
+                <h4><i class="fa-solid fa-microchip"></i> الأجهزة المستخدمة:</h4>
+                <p>• جهاز <strong>Healthytronic (هيلثي ترونيك)</strong> للتحفيز الكهربائي وتقوية العضلات.</p>
+                <p>• جهاز <strong>Gun Massage (مسدس المساج)</strong> لفك التصاقات الأنسجة.</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/201060247673" class="cta-btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> استشارة وحجز جلسة
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- الشريط السفلي -->
+    <div class="bottom-nav">
+        <a href="javascript:void(0)" onclick="showMainMenu()">
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="tel:01060247673" class="call-link">
+            <i class="fa-solid fa-phone-volume"></i>
+            <span>اتصال</span>
+        </a>
+        <a href="https://wa.me/201060247673" target="_blank" class="whatsapp-link">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+    </div>
+
+    <!-- جافاسكريبت للتحكم بالصفحات -->
+    <script>
+        function openFullPage(pageId) {
+            document.getElementById('main-menu').style.display = 'none';
+            const pages = document.querySelectorAll('.section-page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMainMenu() {
+            const pages = document.querySelectorAll('.section-page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById('main-menu').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
