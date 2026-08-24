@@ -1,8 +1,8 @@
 {
   "name": "Vital Care",
   "short_name": "Vital Care",
-  "start_url": "/ahmed-kamel/",
-  "scope": "/ahmed-kamel/",
+  "start_url": "/VitalCare/",
+  "scope": "/VitalCare/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
