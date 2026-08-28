@@ -1,35 +1,16 @@
-const CACHE_NAME = 'vital-care-v3';
-const assetsToCache = [
-    './index.html',
-    './manifest.json',
-    './icon.png'
-];
-
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(assetsToCache))
-            .then(() => self.skipWaiting())
-    );
-});
-
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(keys => {
-            return Promise.all(
-                keys.map(key => {
-                    if (key !== CACHE_NAME) {
-                        return caches.delete(key);
-                    }
-                })
-            );
-        }).then(() => self.clients.claim())
-    );
-});
-
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request))
-    );
-});
+{
+    "name": "Vital Care",
+    "short_name": "VitalCare",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#e0f2fe",
+    "theme_color": "#0f766e",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "192x192 512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
