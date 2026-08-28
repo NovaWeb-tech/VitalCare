@@ -2,9 +2,19 @@
 <html lang="ar" dir="rtl">
 <head>
     <link rel="manifest" href="manifest.json">
+    <!-- تسجيل ملف الـ Service Worker لتمكين تثبيت التطبيق على الجوال -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered successfully!', reg.scope))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Vital Care</title></title>
+    <title>Vital Care</title>
     <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- جوجل فونتس خط تجوال -->
@@ -269,7 +279,7 @@
         .btn-call { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
         .btn-whatsapp { background: linear-gradient(135deg, #10b981, #059669); }
 
-        /* الشريط السفلي */
+        /* الشريط السفلي العائم */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -312,8 +322,8 @@
 
     <!-- الهيدر الرئيسي -->
     <header>
-        <h1> Vital Care</h1></h1>
-        <p> تمريض منزلي . جهاز الفاك . قرح الفراش . حجامة</p>
+        <h1>Vital Care</h1>
+        <p>تمريض منزلي . جهاز الفاك . قرح الفراش . حجامة</p>
         <div class="badge-container">
             <span class="badge"><i class="fa-solid fa-house-medical"></i> زيارات منزلية</span>
             <span class="badge"><i class="fa-solid fa-user-nurse"></i> عناية متخصصة</span>
@@ -335,7 +345,7 @@
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
                 <button class="main-btn" onclick="openFullPage('pt-page')">
-                    <span><i class="fa-solid fa-crutch icon-main"></i> العلاج الطبيعي والتأهيل</span>
+                    <span><i class="fa-solid fa-crutch icon-main"></i> التأهيل الحركي</span>
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
             </div>
@@ -393,10 +403,8 @@
             <h2 class="section-title"><i class="fa-solid fa-bandage"></i> قسم التمريض والعناية بالجروح</h2>
             <p>خدمات تمريضية منزلية احترافية ومتابعة دقيقة لغيار الجروح وجهاز الفاك:</p>
 
-            <!-- الصورة الرئيسية للتمريض المنزلي -->
             <img src="تمريض منزلي.jpg" alt="تمريض منزلي" class="service-img">
 
-            <!-- معرض صور الغيارات -->
             <div class="img-gallery">
                 <img src="غيار١.jpg" alt="غيار الجروح 1">
                 <img src="غيار٢.jpg" alt="غيار الجروح 2">
@@ -427,7 +435,7 @@
                 <i class="fa-solid fa-arrow-right"></i> العودة للقائمة الرئيسية
             </button>
 
-            <h2 class="section-title"><i class="fa-solid fa-person-walking-with-cane"></i> قسم العلاج الطبيعي والتأهيل</h2>
+            <h2 class="section-title"><i class="fa-solid fa-person-walking-with-cane"></i> قسم التاهيل</h2>
             <p>برامج تأهيل حركي شاملة للزيارات المنزلية:</p>
 
             <img src="طبيعي.jpg" alt="العلاج الطبيعي والتأهيل" class="service-img">
@@ -458,7 +466,25 @@
 
     </div>
 
-    <!-- الشريط السفلي -->
+    <!-- تزييل الفوتر المحدث (نوفا ويب تكنولوجي) -->
+    <footer style="background: #0f172a; color: #ffffff; padding: 35px 20px; text-align: center; margin-top: 50px; border-top: 4px solid #0d9488;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <p style="color: #38bdf8; font-size: 1.1rem; margin-bottom: 10px; font-weight: 700;">Nova Web Technology</p>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px;">تصميم وتطوير المواقع والحلول الرقمية وتطبيقات الويب الذكية.</p>
+            
+            <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <a href="https://wa.me/201224151556" target="_blank" style="background: #25d366; color: #ffffff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> تواصل عبر الواتساب
+                </a>
+            </div>
+
+            <p style="color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; padding-top: 15px; margin-top: 15px;">
+                جميع الحقوق محفوظة &copy; 2026 <strong>Nova Web Technology</strong> | تطوير وبرمجة الموقع
+            </p>
+        </div>
+    </footer>
+
+    <!-- الشريط السفلي العائم للجوال -->
     <div class="bottom-nav">
         <a href="javascript:void(0)" onclick="showMainMenu()">
             <i class="fa-solid fa-house"></i>
@@ -493,4 +519,3 @@
     </script>
 </body>
 </html>
-
