@@ -1,21 +1,16 @@
 {
     "name": "Vital Care",
     "short_name": "VitalCare",
-    "start_url": "./VitaCare.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#e0f2fe",
     "theme_color": "#0f766e",
-    "description": "تمريض منزلي، جهاز الفاك، قرح الفراش، والحجامة والعلاج الطبيعي",
     "icons": [
         {
-            "src": "icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png"
+            "src": "icon.png",
+            "sizes": "192x192 512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ]
 }
